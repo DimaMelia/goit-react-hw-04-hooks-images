@@ -1,29 +1,29 @@
 // import logo from "./logo.svg";
-import "./App.css";
-import SearchBar from "./Components/Searchbar/Searchbar";
-import ImageGallery from "./Components/ImageGallery/ImageGallery";
-import Modal from "./Components/Modal/Modal";
-import { useState } from "react";
+import './App.css';
+import SearchBar from './Components/Searchbar/Searchbar';
+import ImageGallery from './Components/ImageGallery/ImageGallery';
+import Modal from './Components/Modal/Modal';
+import { useState } from 'react';
 
 function App() {
-  const [image, setImage] = useState("");
-  const [query, setQuery] = useState("");
+  const [image, setImage] = useState('');
+  const [query, setQuery] = useState('');
   const [showModal, setShowModal] = useState(false);
 
-  openModal = (e) => {
-    setShowModal((showModal = true));
-    setImage((image = e.currentTarget.dataset.largeimage));
+  const openModal = e => {
+    setShowModal(true);
+    setImage(e.currentTarget.dataset.largeimage);
   };
 
-  closeModal = () => {
-    setShowModal((showModal = false));
-    setImage((image = ""));
+  const closeModal = () => {
+    setShowModal(false);
+    setImage('');
   };
 
   return (
     <>
       {showModal && <Modal src={image} onClose={closeModal} />}
-      <SearchBar onSubmit={(searchQuery) => setQuery((query = searchQuery))} />
+      <SearchBar onSubmit={searchQuery => setQuery(searchQuery)} />
       <ImageGallery query={query} openModal={openModal} />
     </>
   );
